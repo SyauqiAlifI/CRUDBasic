@@ -11,6 +11,8 @@ import androidx.room.RoomDatabase
 @Database(entities = [Subscribers::class], version = 1)
 abstract class SubscriberDB: RoomDatabase() {
 
+    abstract val subscriberDao: SubscriberDAO
+
     /* TODO: Use only one interface room for the whole app
     *   to avoid an unexpected errors */
 

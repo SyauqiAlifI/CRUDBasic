@@ -1,14 +1,12 @@
 package com.alif.crudbasic.db
 
 import androidx.lifecycle.LiveData
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
 /* TODO: The Database table might be locked in the main thread */
 
 //  Access Database table (unlocked it using coroutines)
+@Dao
 interface SubscriberDAO {
 
     /* TODO: Using suspend function so it can be paused and resume in a specific time,
