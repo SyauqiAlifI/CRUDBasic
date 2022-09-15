@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.alif.crudbasic.adapter.MyRecycleViewAdapter
 import com.alif.crudbasic.databinding.ActivityMainBinding
 import com.alif.crudbasic.db.SubscriberDB
+import com.alif.crudbasic.db.Subscribers
 import com.alif.crudbasic.repository.SubscriberRepository
 
 class MainActivity : AppCompatActivity() {
@@ -41,7 +42,15 @@ class MainActivity : AppCompatActivity() {
     private fun displaySubscriberList() {
         subscriberViewModel.subscribers.observe(this) {
             Log.i("Observe", "displaySubscriberList: $it")
-            binding.subscriberRecyclerView.adapter = MyRecycleViewAdapter(it)
+            binding.subscriberRecyclerView.adapter = MyRecycleViewAdapter(it) { selectedItem: Subscribers ->
+                listItemClicked(
+                    selectedItem
+                )
+            }
         }
+    }
+
+    private fun listItemClicked(subscribers: Subscribers) {
+        subscriberViewModel.initUpdateAndDelete(subscribers)
     }
 }
