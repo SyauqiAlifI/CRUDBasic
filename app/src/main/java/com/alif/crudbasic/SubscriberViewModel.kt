@@ -32,7 +32,9 @@ class SubscriberViewModel(private val repository: SubscriberRepository): ViewMod
         inputEmail.value = ""
     }
 
-    fun clearAllOrDelete() {}
+    fun clearAllOrDelete() {
+        clearAll()
+    }
 
     fun insert(subscribers: Subscribers) {
         viewModelScope.launch(Dispatchers.IO) {
